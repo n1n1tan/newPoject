@@ -11,7 +11,7 @@ img6 = cv2.imread('./data/road-signs/no-overtaking.jpg')
 img7 = cv2.imread('./data/road-signs/roundabout.jpg')
 
 if img is None:
-    print('Файл не найден')
+    print('Файл не найден')qq
     os._exit(1)
 #
 # img.itemset((10,10,0), 0)
