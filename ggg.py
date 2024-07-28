@@ -88,6 +88,8 @@ while True:
 
         # И выводим его:
         cv2.rectangle(result_rgb, (x, y), (x + w, y + h), (0, 255, 0), 1)
+        cv2.line(result_rgb, (320, 0), (x+w//2, y+h//2), (0, 255, 0), thickness = 2)
+
 
 
     cv2.imshow('mask', result_rgb)

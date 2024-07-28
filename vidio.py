@@ -50,6 +50,7 @@ while True:
         center = (int(x1), int(y1))
         radius = int(radius)
         cv2.circle(result, center, radius, (0, 255, 0), 1)
+        cv2.line(, (x1, y1), (x2, y2), (0, 255, 0), thickness=2)
     cv2.imshow('mask', result2)
     cv2.imshow('result', result)
 
