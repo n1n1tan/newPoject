@@ -17,14 +17,16 @@ while True:
 #КРАСНЫЙ
     min_ = (0,130,40)
     max_ = (21,160,170)
+    mask = cv2.inRange(frame_hsv, min_, max_)
+    result = cv2.bitwise_and(frame, frame, mask=mask)
 
     min1_ = (155,135,40)
     max1_ = (180,155,180)
-
-    mask = cv2.inRange(frame_hsv, min_, max_)
     mask2 = cv2.inRange(frame_hsv, min1_, max1_)
-    result2 = cv2.bitwise_or(mask2, mask)
-    result = cv2.bitwise_and(frame, frame, mask=result2)
+    result1 = cv2.bitwise_and(frame, frame, mask=mask2)
+
+
+    result2 = cv2.bitwise_or(result1, result1)
     # Ищем контуры
     contours = cv2.findContours(result2, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
     # Сами структуры контуров хранятся в начальном элементе возвращаемого значения:
@@ -50,7 +52,7 @@ while True:
         center = (int(x1), int(y1))
         radius = int(radius)
         cv2.circle(result, center, radius, (0, 255, 0), 1)
-        cv2.line(, (x1, y1), (x2, y2), (0, 255, 0), thickness=2)
+
     cv2.imshow('mask', result2)
     cv2.imshow('result', result)
 
