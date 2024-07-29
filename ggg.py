@@ -63,8 +63,8 @@ while True:
     result1 = cv2.bitwise_and(numpix, numpix, mask=mask)
 
     #Желтый
-    min_ = (20, 100, 100)
-    max_ = (30, 255, 255)
+    min_ = (30, 100, 100)
+    max_ = (32, 255, 255)
     mask = cv2.inRange(frame_hsv, min_, max_)
     result2 = cv2.bitwise_and(numpix, numpix, mask=mask)
 
@@ -81,14 +81,22 @@ while True:
 
         # Третий аргумент — это индекс контура, который мы хотим вывести. Мы хотим самый большой.
         # Вывести все можно, передав -1 вместо 0:
-        cv2.drawContours(numpix, contours, -1, (255, 0, 0), 2)
+        cv2.drawContours(numpix, contours, -1, (255, 0, 0), 3)
 
         # Получаем прямоугольник, обрамляющий наш контур:
         (x, y, w, h) = cv2.boundingRect(contours[0])
 
         # И выводим его:
         cv2.rectangle(result_rgb, (x, y), (x + w, y + h), (0, 255, 0), 1)
-        cv2.line(result_rgb, (320, 0), (x+w//2, y+h//2), (0, 255, 0), thickness = 2)
+
+        (x1, y1), radius = cv2.minEnclosingCircle(contours[0])
+        center = (int(x1), int(y1))
+        radius = int(radius)
+        X = result_all.shape[0]
+        Y = result_all.shape[1]
+        startP = (Y // 2, X)
+
+        cv2.line(numpix, startP, center, (0, 255, 0), 1)
 
 
 
