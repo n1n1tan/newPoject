@@ -1,11 +1,13 @@
 # Прога получает и обрабатывает изображение
 import ctypes
-import time
+import keyboard
 import pyautogui
 import time
 import numpy as np
 import cv2
 import imutils
+from control import key_press, SC_LEFT, SC_RIGHT, SC_UP,SC_DOWN
+
 
 # Ждем три секунды, успеваем переключиться на окно:
 print('waiting for 2 seconds...')
@@ -113,15 +115,20 @@ while True:
 
         cv2.line(numpix, startP, center, (0, 255, 0), 1)
 
+        cv2.imshow('mask', result_rgb)
+        cv2.imshow('result', numpix)
 
         func = x1-320
         print(func)
 
+        if func > 0:
+            key_press(SC_RIGHT)
+            time.sleep(0.2)
 
-
-    cv2.imshow('mask', result_rgb)
-    cv2.imshow('result', numpix)
-    if cv2.waitKey(1) == 27:
+        else:
+            key_press(SC_LEFT)
+            time.sleep(0.2)
+    if cv2.waitKey(1)  == 27:
         break
 
 cv2.destroyAllWindows()
