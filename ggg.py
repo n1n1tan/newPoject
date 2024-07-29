@@ -1,4 +1,6 @@
 # Прога получает и обрабатывает изображение
+import ctypes
+import time
 import pyautogui
 import time
 import numpy as np
@@ -112,7 +114,8 @@ while True:
         cv2.line(numpix, startP, center, (0, 255, 0), 1)
 
 
-
+        func = x1-320
+        print(func)
 
 
 
