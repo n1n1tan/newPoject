@@ -119,22 +119,22 @@ while True:
         cv2.imshow('result', numpix)
 
         func = x1-320
-        print(func)
-
+        # print(func)
+        cof = func // 2666
         if func > 0:
-            key_press(SC_UP)
-            time.sleep(0.05)
-            key_press(SC_RIGHT)
-            if func > 270:
-                key_press(SC_DOWN)
-                key_press(SC_RIGHT)
+            key_press(SC_UP, interval=0.08)
+            # time.sleep(0.05)
+            key_press(SC_RIGHT, interval=abs(cof))
+            # if func > 240:
+            #     key_press(SC_DOWN, interval=0.1)
+
         else:
-            key_press(SC_UP)
-            time.sleep(0.05)
-            key_press(SC_LEFT)
-            if func < -270:
-                key_press(SC_DOWN)
-                key_press(SC_LEFT)
+            key_press(SC_UP,interval=0.08)
+            # time.sleep(0.05)
+            key_press(SC_LEFT,interval=abs(cof))
+            # if func < -240:
+            #     key_press(SC_DOWN, interval=0.1)
+
     if cv2.waitKey(1)  == 27:
         break
 
