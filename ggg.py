@@ -1,10 +1,11 @@
 # Прога получает и обрабатывает изображение
 import ctypes
-import keyboard
+import keyControl
 import pyautogui
 import time
 import numpy as np
 import cv2
+from keyControl import control_car
 import imutils
 from control import key_press, SC_LEFT, SC_RIGHT, SC_UP, SC_DOWN, key_down
 
@@ -115,27 +116,16 @@ while True:
 
         cv2.line(numpix, startP, center, (0, 255, 0), 1)
 
-        cv2.imshow('mask', result_rgb)
-        cv2.imshow('result', numpix)
+
 
         func = x1-320
-        # print(func)
-        cof = func // 2666
-        if func > 0:
-            key_press(SC_UP, interval=0.08)
-            # time.sleep(0.05)
-            key_press(SC_RIGHT, interval=abs(cof))
-            # if func > 240:
-            #     key_press(SC_DOWN, interval=0.1)
+        print((func))
 
-        else:
-            key_press(SC_UP,interval=0.08)
-            # time.sleep(0.05)
-            key_press(SC_LEFT,interval=abs(cof))
-            # if func < -240:
-            #     key_press(SC_DOWN, interval=0.1)
+        control_car(func)
 
-    if cv2.waitKey(1)  == 27:
-        break
+        cv2.imshow('mask', result_rgb)
+        cv2.imshow('result', numpix)
+        if cv2.waitKey(1) == 27:
+            break
 
 cv2.destroyAllWindows()
