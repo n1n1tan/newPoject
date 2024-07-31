@@ -1,11 +1,11 @@
 # Прога получает и обрабатывает изображение
 import ctypes
-import keyControl
+import key_control
 import pyautogui
 import time
 import numpy as np
 import cv2
-from keyControl import control_car
+from key_control import q, th
 import imutils
 from control import key_press, SC_LEFT, SC_RIGHT, SC_UP, SC_DOWN, key_down
 
@@ -48,6 +48,7 @@ window_resolution = (640, 480)
 window = (left, top, left+window_resolution[0], top+window_resolution[1])
 
 cv2.namedWindow('result')
+th.start()
 
 while True:
 
@@ -119,9 +120,10 @@ while True:
 
 
         func = x1-320
-        print((func))
+        q.put(func)
 
-        control_car(func)
+
+        # control_car()
 
         cv2.imshow('mask', result_rgb)
         cv2.imshow('result', numpix)
@@ -129,3 +131,5 @@ while True:
             break
 
 cv2.destroyAllWindows()
+q.put(None)
+th.join()
