@@ -5,7 +5,7 @@ import pyautogui
 import time
 import numpy as np
 import cv2
-from key_control import q, th
+from key_control import q, th, control_car
 import imutils
 from control import key_press, SC_LEFT, SC_RIGHT, SC_UP, SC_DOWN, key_down
 
@@ -119,11 +119,12 @@ while True:
 
 
 
-        func = x1-320
+        func = x1 - 310
         q.put(func)
 
 
-        # control_car()
+
+        # control_car(func)
 
         cv2.imshow('mask', result_rgb)
         cv2.imshow('result', numpix)

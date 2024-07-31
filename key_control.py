@@ -6,26 +6,22 @@ q = Queue()
 
 
 def control_car():
-    while func := q.get() is not None:
-
-
-        # key_down(SC_UP)
-        cof = abs(func) // 3200
-        cof2 = abs(func) // 5000
-        speed = 0.07 - cof2
-
+    while (func := q.get()) is not None:
+        cof = func / 2000
+        # speed = func / 3400
+        print(func,abs(cof))
         if func > 0:
-            key_press(SC_UP, interval= speed)
-            key_press(SC_RIGHT, interval=cof)
-            key_press(SC_LEFT, interval=cof//2)
-            # if func > 250:
-            #     key_press(SC_DOWN, interval=abs(speed))
-
-        if func < 0:
-            key_press(SC_UP, interval= speed)
-            key_press(SC_LEFT,interval=cof)
-            key_press(SC_RIGHT, interval=abs(cof) // 2)
-            # if func < -250:
-            #     key_press(SC_DOWN, interval=abs(speed))
+            key_press(SC_UP, interval=0.06)
+            key_press(SC_RIGHT, interval=abs(cof))
+            key_press(SC_LEFT, interval=abs(cof) / 2)
+            if func > 270:
+                key_press(SC_DOWN, interval=0.09)
+        else:
+            key_press(SC_UP,interval = 0.06)
+            key_press(SC_LEFT, interval=abs(cof))
+            key_press(SC_RIGHT, interval=abs(cof) / 2)
+            if func < -270:
+                key_press(SC_DOWN, interval=0.09)
+                key_press(SC_LEFT, interval=abs(cof) )
 
 th = Thread(target=control_car)
