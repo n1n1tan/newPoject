@@ -11,7 +11,7 @@ q = Queue()
 def control_car():
     per = 4
     while (func := q.get()) is not None:
-        print(per)
+
 
 
 
@@ -21,12 +21,12 @@ def control_car():
 
 
         if per > 3:
-            key_press(SC_DEL,interval=0.1)
+            key_press(SC_DEL, interval=0.1)
             per = 3
 
 
         if per < 1:
-            key_press(SC_INS,interval=0.1)
+            key_press(SC_INS, interval=0.1)
             per = 1
 
 

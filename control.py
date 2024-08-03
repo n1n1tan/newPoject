@@ -1,6 +1,6 @@
 import ctypes
 import time
-__all__ = ["key_down", "key_up", "SC_DOWN", "SC_UP", "SC_LEFT", "SC_RIGHT", "SC_INS", "SC_DEL"]
+__all__ = ["key_down", "key_up", "SC_DOWN", "SC_UP", "SC_LEFT", "SC_RIGHT", "SC_INS", "SC_DEL", "SC_ENTER"]
 
 SC_LEFT = (0x4B, True)
 SC_RIGHT = (0x4D, True)
@@ -8,6 +8,7 @@ SC_UP = (0x48, True)
 SC_DOWN = (0x50, True)
 SC_INS = (0x52, True)
 SC_DEL = (0x53, True)
+SC_ENTER = (0x1C, True)
 sendInput = ctypes.windll.user32.SendInput
 
 # C struct redefinitions
